@@ -1,0 +1,73 @@
+<div class="row">
+    <div class="col-md-4">
+        <h3>Data Binding</h3>
+        <div class="form-group">
+            <a (click)="aba = 'dlink1'" class="btn btn-info btn-class">Interpolation</a>
+        </div>
+        <div class="form-group">
+            <a (click)="aba = 'dlink2'" class="btn btn-info btn-class">Property</a>
+        </div>
+        <div class="form-group">
+            <a (click)="aba = 'dlink3'" class="btn btn-info btn-class">Class/Style</a>
+        </div>
+        <div class="form-group">
+            <a (click)="aba = 'dlink4'" class="btn btn-info btn-class">Event</a>
+        </div>
+        <div class="form-group">
+            <a (click)="aba = 'dlink5'" class="btn btn-info btn-class">Two-way</a>
+        </div>
+        <div class="form-group">
+            <a (click)="aba = 'dlink6'" class="btn btn-info btn-class">Input</a>
+        </div>
+        <div class="form-group">
+            <a (click)="aba = 'dlink7'" class="btn btn-info btn-class">Output</a>
+        </div>
+        <div class="form-group">
+            <a (click)="aba = 'dlink8'" class="btn btn-info btn-class">Lifecycle</a>
+        </div>
+        <div class="form-group">
+            <a (click)="aba = 'dlink9'" class="btn btn-info btn-class">ViewChild</a>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div [ngSwitch]="aba">
+
+            <div *ngSwitchCase="'dlink1'">
+                <app-interpolation></app-interpolation>
+            </div>
+
+            <div *ngSwitchCase="'dlink2'">
+                <app-property-binding></app-property-binding>
+            </div>
+
+            <div *ngSwitchCase="'dlink3'">
+                <app-class-binding></app-class-binding>
+            </div>
+
+            <div *ngSwitchCase="'dlink4'">
+                <app-event-binding></app-event-binding>
+            </div>
+
+            <div *ngSwitchCase="'dlink5'">
+                <app-two-way-binding></app-two-way-binding>
+            </div>
+
+            <div *ngSwitchCase="'dlink6'">
+                <app-input-property [attr]="attribute"></app-input-property>
+            </div>
+
+            <div *ngSwitchCase="'dlink7'">
+                <app-output-property [value]="initialValue" (changedValue)="onchangeValue($event)"></app-output-property>
+                <h1>{{ actualValue }}</h1>
+            </div>
+
+            <div *ngSwitchCase="'dlink8'">
+                <app-lifecycle></app-lifecycle>
+            </div>
+
+            <div *ngSwitchCase="'dlink9'">
+                <app-viewchild-cmp></app-viewchild-cmp>
+            </div>
+        </div>
+    </div>
+</div>

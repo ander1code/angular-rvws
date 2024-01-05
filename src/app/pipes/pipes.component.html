@@ -1,0 +1,89 @@
+<div class="row">
+    <div class="col-md-4">
+        <h3>PIPE</h3>
+        <div class="form-group">
+            <a (click)="aba = 'link1'" class="btn btn-info btn-class">Simples Pipes</a>
+        </div>
+        <div class="form-group">
+            <a (click)="aba = 'link2'" class="btn btn-info btn-class">Person's Data</a>
+        </div>
+        <div class="form-group">
+            <a (click)="aba = 'link3'" class="btn btn-info btn-class">Custom Pipe</a>
+        </div>
+        <div class="form-group">
+            <a (click)="aba = 'link4'" class="btn btn-info btn-class">Pure & Inpure Pipe</a>
+        </div>
+        <div class="form-group">
+            <a (click)="aba = 'link6'" class="btn btn-info btn-class">Pipe ASYNC</a>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div [ngSwitch]="aba">
+
+            <div *ngSwitchCase="'link1'">
+                <h4>Simple pipes</h4>
+                <p>{{ text | lowercase }}</p>
+                <p>{{ text | uppercase }}</p>
+                <p>{{ valnum | number:'2.1' }}</p>
+                <p>{{ price | currency }}</p>
+                <p>{{ price | currency:'BRL' }}</p>
+                <p>{{ price | currency:'BRL':true }}</p>
+                <p>{{ today | date }}</p>
+                <p>{{ today | date:'shortDate' }}</p>
+                <p>{{ today | date:'d/M/y' }}</p>
+                <p>{{ courses | json }}</p>
+                <p>{{ person | json }}</p>
+
+            </div>
+
+            <div *ngSwitchCase="'link2'">
+                <h4>Person's Data:</h4>
+                <p>ID: {{ person.id }}</p>
+                <p>NAME: {{ person.name }}</p>
+                <p>STREET: {{ person.address.street }}</p>
+                <p>DISTRICT: {{ person.address.district }}</p>
+                <p>NUMBER: {{ person.address.num }}</p>
+                <p>CITY: {{ person.address.city }}</p>
+                <p>STATE: {{ person.address.state }}</p>
+
+            </div>
+
+            <div *ngSwitchCase="'link3'">
+                <h3>Custom Pipe</h3>
+                <p>{{ text | upper }}</p>
+                <p>{{ 81 | mysqrt }}</p>
+            </div>
+
+            <div *ngSwitchCase="'link4'">
+                <h3>Pure Pipe</h3>
+                <h4>Courses's Listing</h4>
+                <ul>
+                    <li *ngFor="let c of courses | filterArrayPure:_filter">
+                        {{c}}
+                    </li>
+                </ul>
+                <h3>Pure Impure</h3>
+                <h4>Courses's Listing</h4>
+                <ul>
+                    <li *ngFor="let c of courses | filterArrayImpure:_filter">
+                        {{c}}
+                    </li>
+                </ul>
+                <h3>Forms</h3>
+                <div class="form-group">
+                    <label for="">SEARCH:</label><br>
+                    <input type="text" [(ngModel)]="_filter" class="form-control"><br><br>
+                    <label for="">NEW:</label><br>
+                    <input type="text" #inputadd class="form-control">
+                    <br>
+                    <button class="btn btn-success pull-right btn-class" (click)="addCourse(inputadd.value)">ADD</button>
+                </div>
+            </div>
+
+            <div *ngSwitchCase="'link6'">
+                <h3>Pipe ASYNC</h3>
+                <h1>{{ valAsync1 | async }}</h1>
+            </div>
+        </div>
+    </div>
+</div>

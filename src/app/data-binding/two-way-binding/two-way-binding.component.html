@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-md-offset-2 col-md-8 col-md-offset-2">
+    <h3>Two-way Data Binding</h3>
+    <label for="">VERSION 01</label><br>
+    <input type="text" [value]="name" class="form-control" (input)="name = $event.target.value"><br>
+    <label for="">VERSION 02</label><br>
+    <input type="text" [ngModel]="name" (ngModelChange)="name = $event" class="form-control"><br>
+    <label for="">VERSION 03 (Two-way data binding):</label><br>
+    <input type="text" [(ngModel)]="name" class="form-control"><br>
+    <h5>{{ name }}</h5>
+  </div>
+</div>

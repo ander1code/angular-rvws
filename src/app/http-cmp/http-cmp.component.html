@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-md-offset-2 col-md-8 col-md-offset-2">
+    <h1>Http</h1>
+    <h3>People's Listing</h3>
+    <div *ngIf="people$ | async as people; else loading">
+      <ul>
+        <li *ngFor="let person of people">
+          {{ person.id }} - {{ person.name }}
+        </li>
+      </ul>
+    </div>
+
+    <ng-template #loading>
+      <p>Loading people...</p>
+    </ng-template>
+  </div>
+</div>

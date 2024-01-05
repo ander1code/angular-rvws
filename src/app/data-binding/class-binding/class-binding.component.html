@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-offset-2 col-md-8 col-md-offset-2">
+    <h3>Class e Style binding</h3>
+    <h5>{{ alertstyle.value }}</h5>
+    <div role="alert" class="alert {{ alertstyle.value }}"><strong>Alert!</strong> Lorem ipsum dolor sit amet,
+      consectetur adipiscing elit.</div>
+    <hr>
+    <div role="alert" class="alert" [class.alert-success]="alertstyle.value == 'alert-success'"><strong>Success!</strong>
+      Lorem ipsum dolor sit amet,
+      consectetur adipiscing elit.</div>
+    <div role="alert" class="alert" [class.alert-info]="alertstyle.value == 'alert-info'"><strong>Info!</strong> Lorem
+      ipsum dolor sit amet,
+      consectetur adipiscing elit.</div>
+    <div role="alert" class="alert" [class.alert-warning]="alertstyle.value == 'alert-warning'"><strong>Warning!</strong>
+      Lorem ipsum dolor sit amet,
+      consectetur adipiscing elit.</div>
+    <div role="alert" class="alert" [class.alert-danger]="alertstyle.value == 'alert-danger'"><strong>Danger!</strong>
+      Lorem ipsum dolor sit amet,
+      consectetur adipiscing elit.</div>
+    <div role="alert" class="alert" [class.alert-danger]="alertstyle.value == 'alert-danger'" [style.display]="alertstyle.value == 'alert-danger' ? 'block' : 'none' "><strong>Danger!</strong>
+      Show with error.</div>
+    <select (change)="changeStyle($event)" #alertstyle class="form-control">
+      <option value="{{ alert.class }}" *ngFor="let alert of alerts">{{ alert.name }}</option>
+    </select>
+  </div>
+</div>

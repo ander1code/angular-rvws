@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-md-offset-2 col-md-8 col-md-offset-2">
+    <h3>Event Binding</h3>
+    <button class="btn btn-primary" (click)="onClick()">CLICK</button>
+    <br>
+    <br>
+    <h5>Actual value: {{ actualValue }}</h5>
+    <h5>Value save: {{ valuesave }} </h5>
+    <h5>Value save (blur): {{ valueBlur }} </h5>
+    <input type="text" class="form-control" (keyup)="onKey($event)" (keyup.enter)="saveValue($event.target.value)" (blur)="saveValueBlur(inputValue.value)"
+      #inputValue>
+    <br><br><br>
+    <h4>{{ statusMouse }} </h4>
+    <div class="over" [class.out]="statusMouse" (mouseover)="onMouseOverOut()" (mouseout)="onMouseOverOut()">
+    </div>
+  </div>
+</div>

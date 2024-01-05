@@ -1,0 +1,28 @@
+
+
+input, textarea{
+    border:3px solid black;
+}
+
+textarea{
+    resize: none;
+}
+
+body{
+    background-color: grey;
+}
+
+button{
+    width:150px;
+}
+
+.ng-invalid.ng-touched:not(form){
+    border: 2px solid red;
+}
+
+
+.div-errors{
+    border:3px solid red;
+    color:red;
+    background-color: yellow;
+}

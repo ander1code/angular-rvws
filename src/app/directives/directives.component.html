@@ -1,0 +1,135 @@
+<div class="row">
+  <div class="col-md-4">
+    <h3>Directives</h3>
+    <div class="form-group">
+      <a (click)="aba = 'link1'" class="btn btn-info btn-class">ngIf</a>
+    </div>
+    <div class="form-group">
+      <a (click)="aba = 'link2'" class="btn btn-info btn-class">ngSwitch</a>
+    </div>
+    <div class="form-group">
+      <a (click)="aba = 'link3'" class="btn btn-info btn-class">ngFor</a>
+    </div>
+    <div class="form-group">
+      <a (click)="aba = 'link4'" class="btn btn-info btn-class">ngClass</a>
+    </div>
+    <div class="form-group">
+      <a (click)="aba = 'link5'" class="btn btn-info btn-class">ngStyles</a>
+    </div>
+    <div class="form-group">
+      <a (click)="aba = 'link6'" class="btn btn-info btn-class">Elvis</a>
+    </div>
+    <div class="form-group">
+      <a (click)="aba = 'link7'" class="btn btn-info btn-class">ng-content</a>
+    </div>
+    <div class="form-group">
+      <a (click)="aba = 'link8'" class="btn btn-info btn-class">Custom directive</a>
+    </div>
+    <div class="form-group">
+      <a (click)="aba = 'link9'" class="btn btn-info btn-class">Hostlistener & Hostbinding</a>
+    </div>
+    <div class="form-group">
+      <a (click)="aba = 'link10'" class="btn btn-info btn-class">Property Binding</a>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div [ngSwitch]="aba">
+
+      <div *ngSwitchCase="'link1'">
+        <h1>ngIf</h1>
+        <div *ngIf="status">
+          <img src="{{ urlImage }}" alt="{{ urlImage }}">
+        </div>
+        <button (click)="showHide()" [class]="status ? 'btn btn-danger' : 'btn btn-success'">{{ lblButton }}</button>
+      </div>
+
+      <div *ngSwitchCase="'link2'">
+        <h1>ngSwitch</h1>
+        <a (click)="aba2 = 'link24'" class="btn btn-danger pull-right">ABA 04</a>
+        <a (click)="aba2 = 'link23'" class="btn btn-warning pull-right">ABA 03</a>
+        <a (click)="aba2 = 'link22'" class="btn btn-info pull-right">ABA 02</a>
+        <a (click)="aba2 = 'link21'" class="btn btn-success pull-right">ABA 01</a>
+        <br>
+        <div [ngSwitch]="aba2">
+          <h1 *ngSwitchCase="'link21'">ABA 01</h1>
+          <h1 *ngSwitchCase="'link22'">ABA 02</h1>
+          <h1 *ngSwitchCase="'link23'">ABA 03</h1>
+          <h1 *ngSwitchCase="'link24'">ABA 04</h1>
+        </div>
+      </div>
+
+      <div *ngSwitchCase="'link3'">
+        <h1>ngFor</h1>
+        <h3>People's Listing</h3>
+        <ul>
+          <li *ngFor="let person of people" class="font-list">
+            {{ person }}
+          </li>
+        </ul>
+      </div>
+
+      <div *ngSwitchCase="'link4'">
+        <h3>ngClass</h3>
+        <div [ngClass]="{'out': statusClass, 'over': !statusClass}"></div>
+        <br>
+        <button (click)="changeClass()" class="btn btn-success pullr-right">CHANGE</button>
+      </div>
+
+      <div *ngSwitchCase="'link5'">
+        <h3>ngStyles</h3>
+        <div class="out" [ngStyle]="{'background-color': statusStyle ? 'blue' : 'black'}"></div>
+        <br>
+        <button (click)="changeStyle()" class="btn btn-success">CHANGE</button>
+      </div>
+
+      <div *ngSwitchCase="'link6'">
+        <h3>Elvis Operator</h3>
+        <p>Name: {{ people[8]?.name }}</p>
+      </div>
+
+      <div *ngSwitchCase="'link7'">
+        <h3>ng-content</h3>
+        <app-ng-content>
+          <div class="body">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna
+            aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            Duis
+            aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+            sint
+            occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+          <div class="head">
+            <h4>Lorem ipsum</h4>
+          </div>
+        </app-ng-content>
+      </div>
+
+      <div *ngSwitchCase="'link8'">
+        <h3>Custom Directive</h3>
+        <p appCaptext>Hello, World!</p>
+      </div>
+
+      <div *ngSwitchCase="'link9'">
+        <h3>HostListener e HostBinding</h3>
+        <p appHighlightMouse class="lorem"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut
+          labore et dolore magna
+          aliqua.
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Duis
+          aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+          sint
+          occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div>
+
+      <div *ngSwitchCase="'link10'">
+        <h3>Property Binding</h3>
+        <app-property-directive appHighlight [font]="'red'"></app-property-directive>
+      </div>
+
+    </div>
+  </div>
+</div>

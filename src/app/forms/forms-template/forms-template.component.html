@@ -1,0 +1,110 @@
+<h1>Template-driven Forms</h1>
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8 col-md-offset-2">
+            <!-- <div class="form-group" [class.has-error]="!name.valid && name.touched"> -->
+            <div class="form-group" ngClass="setErrorCSS(name);">
+                <label for="name" class="control-label">Name</label>
+                <input type="text" id="name" name="name" class="form-control" [ngModel]="person.name" required #name="ngModel">
+                <!-- <div *ngIf="!name.valid && name.touched" class="alert alert-danger" role="alert">
+                    Name is empty.
+                </div> -->
+                <app-forms-errors [showError]="checkValidTouched(name)" messageError="Name is empty."></app-forms-errors>
+            </div>
+            <div class="form-group" ngClass="setErrorCSS(email);">
+                <label for="email" class="control-label">E-mail</label>
+                <input type="text" id="email" name="email" class="form-control" [ngModel]="person.email" required
+                    #email="ngModel" email>
+                <!-- <div *ngIf="!email.valid && email.touched" class="alert alert-danger" role="alert">
+                    Invalid e-mail.
+                </div> -->
+                <app-forms-errors [showError]="checkValidTouched(email)" messageError="Invalid e-mail."></app-forms-errors>
+            </div>
+            <div ngModelGroup="address">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group" ngClass="setErrorCSS(cep);">
+                            <label for="cep" class="control-label">CEP</label>
+                            <input type="text" class="form-control" id="cep" name="cep" [(ngModel)]="person.cep"
+                                required #cep="ngModel" (blur)="SearchCep($event.target.value, f)">
+                            <!-- <div *ngIf="!cep.valid && cep.touched" class="alert alert-danger" role="alert">
+                            Cep is empty.
+                        </div> -->
+                            <app-forms-errors [showError]="checkValidTouched(cep)" messageError="Cep is empty."></app-forms-errors>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group" ngClass="setErrorCSS(num);">
+                            <label for="num" class="control-label">Number</label>
+                            <input type="text" id="num" name="num" class="form-control" [ngModel]="person.num" required
+                                #num="ngModel">
+                            <!-- <div *ngIf="!num.valid && num.touched" class="alert alert-danger" role="alert">
+                            Number is empty.
+                        </div> -->
+                            <app-forms-errors [showError]="checkValidTouched(num)" messageError="Number is empty."></app-forms-errors>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="complement" class="control-label">Complement</label>
+                            <input type="text" id="complement" name="complement" class="form-control" [ngModel]="person.complement"
+                                #complement="ngModel">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" ngClass="setErrorCSS(street);">
+                    <label for="street" class="control-label">Street</label>
+                    <input type="text" id="street" name="street" class="form-control" [ngModel]="person.street"
+                        required #street="ngModel" readonly>
+                    <!-- <div *ngIf="!street.valid && street.touched" class="alert alert-danger" role="alert">
+                    Street is empty.
+                </div> -->
+                    <app-forms-errors [showError]="checkValidTouched(street)" messageError="Street is empty."></app-forms-errors>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group" ngClass="setErrorCSS(district);">
+                            <label for="district" class="control-label">District</label>
+                            <input type="text" id="district" name="district" class="form-control" [ngModel]="person.district"
+                                required #district="ngModel" readonly>
+                            <!-- <div *ngIf="!district.valid && district.touched" class="alert alert-danger" role="alert">
+                            District is empty.
+                        </div> -->
+                            <app-forms-errors [showError]="checkValidTouched(district)" messageError="District is empty."></app-forms-errors>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group" ngClass="setErrorCSS(city);">
+                            <label for="city" class="control-label">City</label>
+                            <input type="text" id="city" name="city" class="form-control" [ngModel]="person.city"
+                                required #city="ngModel" readonly>
+                            <!-- <div *ngIf="!city.valid && city.touched" class="alert alert-danger" role="alert">
+                            City is empty.
+                        </div> -->
+                            <app-forms-errors [showError]="checkValidTouched(city)" messageError="City is empty."></app-forms-errors>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group" ngClass="setErrorCSS(state);">
+                            <label for="state" class="control-label">State</label>
+                            <input type="text" id="state" name="state" class="form-control" [ngModel]="person.state"
+                                required #state="ngModel" readonly>
+                            <!-- <div *ngIf="!state.valid && state.touched" class="alert alert-danger" role="alert">
+                            State is empty.
+                        </div> -->
+                            <app-forms-errors [showError]="checkValidTouched(state)" messageError="State is empty."></app-forms-errors>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success pull-right" [disabled]="!f.valid">SUBMIT</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8 col-md-offset-2">
+            <app-forms-debug [forms]="f"></app-forms-debug>
+        </div>
+    </div>
+</form>

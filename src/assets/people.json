@@ -1,0 +1,32 @@
+{
+    "people": [
+        {
+            "id": 1,
+            "name": "Anderson"
+        },
+        {
+            "id": 2,
+            "name": "Pamela"
+        },
+        {
+            "id": 3,
+            "name": "Rafaela"
+        },
+        {
+            "id": 4,
+            "name": "Bianca"
+        },
+        {
+            "id": 5,
+            "name": "Paula"
+        },
+        {
+            "id": 6,
+            "name": "Nicole"
+        },
+        {
+            "id": 7,
+            "name": "Jussara"
+        }
+    ]
+}

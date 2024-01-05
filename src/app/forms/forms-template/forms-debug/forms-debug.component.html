@@ -1,0 +1,24 @@
+<h3>Form's Debug</h3>
+
+<div class="row" style="margin-top:20px">
+  <div class="col-md-6">
+    <pre>
+      <h4>Valid:</h4>
+      {{ forms.valid }}
+    </pre>
+  </div>
+  <div class="col-md-6">
+    <pre>
+      <h4>Submitted:</h4>
+      {{ forms.submitted }}
+    </pre>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <pre>
+          <h4>Values</h4>
+          {{ forms.value | json }}
+        </pre>
+  </div>
+</div>

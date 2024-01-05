@@ -1,0 +1,93 @@
+<h3>ReactiveForms</h3>
+
+<div class="btn-group btn-group-justified" role="group" aria-label="Justified button group"> 
+    <a (click)="abaf = 'flink1'" class="btn btn-danger" role="button">Intro</a> 
+    <a (click)="abaf = 'flink2'" class="btn btn-warning" role="button">FormGroup</a> 
+    <a (click)="abaf = 'flink3'" class="btn btn-success" role="button">FormBuilder</a> 
+</div>
+
+<div [ngSwitch]="abaf">
+    <div class="row" *ngSwitchCase="'flink1'">
+        <div class="col-md-offset-2 col-md-8 col-md-offset-2">
+            <div class="form-group">
+                <h3 style="color:red;">{{ name.value }}</h3>
+                <label for="" class="control-label">Enter the name:</label>
+                <input type="text" [formControl]="name" class="form-control">
+                <hr>
+                <h4>Update</h4>
+                <label for="" class="control-label">New Name:</label>
+                <input type="text" [formControl]="newname" class="form-control">
+                <br>
+                <button (click)="updateName()" class="btn btn-success pull-right">UPDATE</button>
+            </div>
+        </div>
+    </div>
+
+    <div *ngSwitchCase="'flink2'">
+        <form [formGroup]="personForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8 col-md-offset-2">
+                    <div class="form-group">
+                        <h2>FormGroup</h2>
+                        <label for="" class="control-label">First Name:</label>
+                        <input type="text" formControlName="fname" required class="form-control">
+                        <label for="" class="control-label">Last Name:</label>
+                        <input type="text" formControlName="lname" required class="form-control">
+                        <div formGroupName="address">
+                            <h4>Address:</h4>
+                            <label for="" class="control-label">Street:</label>
+                            <input type="text" formControlName="street" required class="form-control">
+                            <label for="" class="control-label">Number:</label>
+                            <input type="text" formControlName="number" required class="form-control">
+                            <label for="" class="control-label">District:</label>
+                            <input type="text" formControlName="district" required class="form-control">
+                            <label for="" class="control-label">City:</label>
+                            <input type="text" formControlName="city" required class="form-control">
+                            <label for="" class="control-label">State:</label>
+                            <input type="text" formControlName="state" required class="form-control">
+                        </div>
+                        <br>
+                        <button type="submit" [disabled]="!personForm.valid" class="btn btn-success pull-right">SUBMIT</button>
+                        {{ personForm.status }}
+                        <br><br>
+                        {{ personForm.value | json }}
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div *ngSwitchCase="'flink3'">
+        <form [formGroup]="personFormBuilder" (ngSubmit)="onSubmitFrmBuilder()">
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8 col-md-offset-2">
+                    <div class="form-group">
+                        <h2>FormBuilder</h2>
+                        <label for="" class="control-label">First Name:</label>
+                        <input type="text" formControlName="fname" class="form-control" required>
+                        <label for="" class="control-label">Last Name:</label>
+                        <input type="text" formControlName="lname" class="form-control">
+                        <div formGroupName="address">
+                            <h4>Address:</h4>
+                            <label for="" class="control-label">Street:</label>
+                            <input type="text" formControlName="street" class="form-control">
+                            <label for="" class="control-label">Number:</label>
+                            <input type="text" formControlName="number" class="form-control">
+                            <label for="" class="control-label">District:</label>
+                            <input type="text" formControlName="district" class="form-control">
+                            <label for="" class="control-label">City:</label>
+                            <input type="text" formControlName="city" class="form-control">
+                            <label for="" class="control-label">State:</label>
+                            <input type="text" formControlName="state" class="form-control">
+                        </div>
+                        <br>
+                        <button type="submit" [disabled]="!personFormBuilder.valid" class="btn btn-success pull-right">SUBMIT</button>
+                        {{ personFormBuilder.status }}
+                        <br><br>
+                        {{ personFormBuilder.value | json }}
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
